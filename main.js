@@ -1,24 +1,26 @@
 today = new Date();
-year = today.getFullYear();
-month = today.getMonth();
+yy = today.getFullYear();
+mm = today.getMonth();
 
-YM = year + "년 " + (month + 1) + "월";
-document.querySelector("#ym").innerHTML = YM;
+YM = yy + "년 " + (mm + 1) + "월";
+document.getElementById("ym").innerHTML = YM;
 
-first_date = new Date(year, month, 1).getDate();
-last_date = new Date(year, month + 1, 0).getDate();
-first_day = new Date(year, month, 1).getDay();
+first_date = new Date(yy, mm, 1).getDate();
+last_date = new Date(yy, mm + 1, 0).getDate();
+first_day = new Date(yy, mm, 1).getDay();
 
-console.log(first_date);
-console.log(last_date);
-console.log(first_day);
-
-function calender() {
-  calendar = document.querySelector("#calendar");
+function makecalendar() {
+  calendar = document.getElementById("calendar");
   //calendar테이블을 변수로 정의
   row = calendar.insertRow();
   //calendar에 행을 추가해준다.
   //변수명(row)을 지정해주는 이유 : 후에 cell이 추가될 자리를 알려주기 위해
+  for (i = 0; i < first_day; i++) {
+    //first_day에 해당하는 요일까지 열을 만든다.
+    //요일은 0부터 시작하기 때문에 i값도 0에서 시작한다.
+    cell = row.insertCell();
+    //cell.innerHTML = "HI";
+  }
   for (let i = 1; i <= last_date; i++) {
     // 달력은 1일부터 시작하므로 i=1
     if (first_day != 7) {
@@ -29,7 +31,7 @@ function calender() {
       //모든 셀에 id를 부여함
       cell.innerHTML = [i];
       //추가된 셀에 i값 입력
-      first_day = first_day + 1;
+      first_day += 1;
       //요일값이 하루 추가된걸 for문에 알려줌
     } else {
       //첫줄의 first_day 값이 7이되면 작동
@@ -45,19 +47,16 @@ function calender() {
     }
   }
 }
-calender();
-
-window.onload = function () {
-  serch_today();
-};
+makecalendar();
 
 function serch_today() {
   today_date = today.getDate();
-  this_month = new Date().getMonth();
-  this_year = new Date().getFullYear();
-  this_YM = this_year + "년 " + (this_month + 1) + "월";
+  this_mm = new Date().getMonth();
+  this_yy = new Date().getFullYear();
+  this_YM = this_yy + "년 " + (this_mm + 1) + "월";
   //오늘 날짜를 함수로 정의 -> 올해 오늘 날짜만 색칠되게하기위함
-  for (i = 1; i <= last_date; i++) {
+
+  for (let i = 1; i <= last_date; i++) {
     set_id = document.getElementById([i]);
     //오늘 날짜와 비교할 id정의
     if (today_date == set_id.getAttribute("id") && this_YM == YM) {
@@ -67,16 +66,7 @@ function serch_today() {
     }
   }
 }
-serch_today();
-
-// const before = document.querySelector('.bf')
-// const next = document.querySelector('.nx')
-// before.addEventListener('click', function() {
-//   before_month();
-// })
-// next.addEventListener('click', function() {
-//   next_month();
-// })
+window.onload = serch_today();
 
 function before_month() {
   while (calendar.rows.length > 2) {
@@ -85,44 +75,39 @@ function before_month() {
     calendar.deleteRow(calendar.rows.length - 1);
     //length-1 = 아래서부터 지우라는 뜻
   }
-
-  month = month - 1;
+  mm = mm - 1;
   //한달씩 뒤로감
-  if (month === -1) {
+  if (mm === -1) {
     //0월이 되었을 때 이전연도 12월로 가도록 작업
     //js에서 0월 = 실제 1월 이므로 -1로 맞춰야한다.
-    year = year - 1;
-    month = month + 12;
+    yy = yy - 1;
+    mm = mm + 12;
   }
-
-  YM = year + "년 " + (month + 1) + "월";
+  YM = yy + "년 " + (mm + 1) + "월";
   document.getElementById("ym").innerHTML = YM;
-  first_date = new Date(year, month, 1).getDate();
-  last_date = new Date(year, month + 1, 0).getDate();
-  first_day = new Date(year, month, 1).getDay();
-
-  calender();
+  first_date = new Date(yy, mm, 1).getDate();
+  last_date = new Date(yy, mm + 1, 0).getDate();
+  first_day = new Date(yy, mm, 1).getDay();
+  makecalendar();
 }
 
 function next_month() {
   while (calendar.rows.length > 2) {
     calendar.deleteRow(calendar.rows.length - 1);
   }
-
-  month = month + 1;
+  mm = mm + 1;
   //한달씩 증가함
-  if (month === 12) {
+  if (mm === 12) {
     //13월이 되었을 때 다음연도 1월로 가도록 작업
     //js에서 11월 = 실제 12월 이므로 12로 맞춰야한다.
-    year = year + 1;
-    month = month - 12;
+    yy = yy + 1;
+    mm = mm - 12;
   }
 
-  YM = year + "년 " + (month + 1) + "월";
+  YM = yy + "년 " + (mm + 1) + "월";
   document.getElementById("ym").innerHTML = YM;
-  first_date = new Date(year, month, 1).getDate();
-  last_date = new Date(year, month + 1, 0).getDate();
-  first_day = new Date(year, month, 1).getDay();
-
-  calender();
+  first_date = new Date(yy, mm, 1).getDate();
+  last_date = new Date(yy, mm + 1, 0).getDate();
+  first_day = new Date(yy, mm, 1).getDay();
+  makecalendar();
 }
