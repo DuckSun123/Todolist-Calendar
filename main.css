@@ -1,0 +1,28 @@
+
+h1 {
+  font-size: 40px;
+  font-weight: 700;
+  padding: 20px 30px 30px;
+}
+
+tbody tr {
+  position: relative;
+}
+tbody tr .red {
+  color: rgb(212, 6, 6);
+}
+tbody tr .gray {
+  color: gray;
+}
+tbody tr th {
+  font-size: 20px;
+  width: 100px;
+  margin-left: 30px;
+  padding: 20px 0;
+}
+tbody tr td {
+  text-align: start;
+  width: 100px;
+  height: 100px;
+  border: 1px solid royalblue;
+}

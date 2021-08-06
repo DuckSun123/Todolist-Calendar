@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todolist-Calendar</title>
+
+    <script defer src="./main.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
+    />
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <h1>Todolist-Calendar</h1>
+
+    <table id="calendar">
+      <thead>
+        <tr>
+          <th>
+            <input
+              class="bf"
+              type="button"
+              value="<이전"
+              onclick="before_month()"
+            />
+          </th>
+          <th colspan="5" id="ym">year-month</th>
+          <th>
+            <input
+              class="nx"
+              type="button"
+              value="다음>"
+              onclick="next_month()"
+            />
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th class="red">Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th class="gray">Sat</th>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
