@@ -1,3 +1,4 @@
+//--------------------calendar----------------------
 // 기본설정
 today = new Date();
 yy = today.getFullYear();
@@ -10,6 +11,8 @@ first_date = new Date(yy, mm, 1).getDate();
 last_date = new Date(yy, mm + 1, 0).getDate();
 first_day = new Date(yy, mm, 1).getDay();
 
+let modal = document.querySelector(".madal");
+
 // 달력 나타내기
 function makecalendar() {
   calendar = document.getElementById("calendar");
@@ -18,13 +21,13 @@ function makecalendar() {
   for (let i = 0; i < first_day; i++) {
     cell = row.insertCell();
   }
-  console.log(first_day);
   for (let i = 1; i <= last_date; i++) {
     if (first_day != 7) {
       cell = row.insertCell();
       cell.setAttribute("id", [i]);
       cell.innerHTML = [i];
       first_day += 1;
+      // console.log(i);
     } else {
       row = calendar.insertRow();
       cell = row.insertCell();
@@ -91,3 +94,4 @@ function next_month() {
   makecalendar();
   serch_today();
 }
+//------------------------------------------------

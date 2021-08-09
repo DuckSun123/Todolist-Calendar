@@ -4,13 +4,31 @@ h1 {
   padding: 20px 30px 30px;
 }
 
-tbody tr {
+.main {
   position: relative;
+  width: 1000px;
+  height: 800px;
 }
-tbody tr .red {
+thead {
+}
+thead .top {
+  position: relative;
+  background-color: aqua;
+  border-radius: 10px;
+  width: 700px;
+  height: 30px;
+  border: 1px solid #333;
+}
+
+tbody .day {
+  position: relative;
+  background-color: coral;
+  border: 1px solid #333;
+}
+tbody .day .red {
   color: rgb(212, 6, 6);
 }
-tbody tr .gray {
+tbody .day .gray {
   color: gray;
 }
 tbody tr th {
@@ -20,8 +38,14 @@ tbody tr th {
   padding: 20px 0;
 }
 tbody tr td {
-  text-align: start;
   width: 100px;
   height: 100px;
-  border: 1px solid royalblue;
+  border: 1px solid #333;
+}
+
+.modal {
+  width: 600px;
+  height: 400px;
+  background-color: bisque;
+  display: none;
 }
