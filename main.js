@@ -18,6 +18,7 @@ function makecalendar() {
   for (let i = 0; i < first_day; i++) {
     cell = row.insertCell();
   }
+  console.log(first_day);
   for (let i = 1; i <= last_date; i++) {
     if (first_day != 7) {
       cell = row.insertCell();
@@ -34,6 +35,22 @@ function makecalendar() {
   }
 }
 makecalendar();
+
+// 오늘 날짜에 색 나타내기
+function serch_today() {
+  today_date = today.getDate();
+  this_mm = new Date().getMonth();
+  this_yy = new Date().getFullYear();
+  this_YM = this_yy + "년 " + (this_mm + 1) + "월";
+
+  for (let i = 1; i <= last_date; i++) {
+    set_id = document.getElementById([i]);
+    if (today_date == set_id.getAttribute("id") && this_YM == YM) {
+      set_id.bgColor = "red";
+    }
+  }
+}
+serch_today();
 
 // 버튼 조작
 function before_month() {
@@ -74,22 +91,3 @@ function next_month() {
   makecalendar();
   serch_today();
 }
-
-// 오늘 날짜에 색 나타내기
-function serch_today() {
-  today_date = today.getDate();
-  this_mm = new Date().getMonth();
-  this_yy = new Date().getFullYear();
-  this_YM = this_yy + "년 " + (this_mm + 1) + "월";
-
-  for (let i = 1; i <= last_date; i++) {
-    set_id = document.getElementById([i]);
-    if (today_date == set_id.getAttribute("id") && this_YM == YM) {
-      set_id.bgColor = "red";
-      console.log(set_id);
-    }
-
-    // console.log(set_id.getAttribute("id"));
-  }
-}
-serch_today();
